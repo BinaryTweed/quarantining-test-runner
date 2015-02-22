@@ -1,6 +1,6 @@
 # quarantining-test-runner
 
-Loads the <strong>test class</strong> and optionally specified classes in a separate `ClassLoader`. This means that static members will effectively be reset between each test class, as new versions of those classes are loaded.
+A JUnit test runner that loads the <strong>test class</strong> and optionally specified classes in a separate `ClassLoader`. This means that static members will effectively be reset between each test class, as new versions of those classes are loaded.
 
 ## To use
 
