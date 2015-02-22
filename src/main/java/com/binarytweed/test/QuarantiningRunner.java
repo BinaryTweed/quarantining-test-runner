@@ -37,8 +37,6 @@ public class QuarantiningRunner extends Runner
 		quarantinedPatternDiscoverer = new QuarantinedPatternDiscoverer();
 		Class<? extends Runner> delegateRunningTo = delegateRunningToDiscoverer.getDelegateRunningToOn(testFileClass);
 		
-		
-		
 		String testFileClassName = testFileClass.getName();
 		String delegateRunningToClassName = delegateRunningTo.getName();
 		
@@ -48,7 +46,7 @@ public class QuarantiningRunner extends Runner
 		allPatterns[quarantinedPatterns.length + 1] = delegateRunningToClassName;
 		
 		QuarantiningUrlClassLoader classLoader = new QuarantiningUrlClassLoader(allPatterns);
-		
+
 		try
 		{
 			innerRunnerClass = classLoader.loadClass(delegateRunningToClassName);
