@@ -8,12 +8,12 @@ A JUnit test runner that loads the <strong>test class</strong> and optionally sp
 
 ```java
 @RunWith(QuarantiningRunner.class)
-@Quarantine({"com.binarytweed"})
+@Quarantine({"com.binarytweed", "com.example.ClassName"})
 public class MyIsolatedTest {
 ...
 ```
 
 1. Annotate your test class with `@RunWith(QuarantiningRunner.class)`
-1. Use `@Quarantine({"com.example"})` to specify patterns which separately-loaded class names should start with 
+1. Use `@Quarantine("com.example")` to specify patterns which separately-loaded class names should start with 
 1. Optionally specify `@DelegateRunningTo(SomeCustomRunner.class)` to have `QuarantiningRunner` use another `Runner` implementation. By default it uses `BlockJUnit4ClassRunner`
 
