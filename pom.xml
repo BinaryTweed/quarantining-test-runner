@@ -65,12 +65,28 @@
 				</executions>
 			</plugin>
 			<plugin>
-	            <artifactId>maven-scm-plugin</artifactId>
-	            <version>1.9.2</version>
-	            <configuration>
-	                <tag>${project.version}</tag>
-	            </configuration>
-	        </plugin>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.9.2</version>
+				<configuration>
+					<tag>${project.version}</tag>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<secretKeyring>secring.gpg</secretKeyring>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

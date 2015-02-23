@@ -2,3 +2,7 @@ language: java
 before_install:
 - openssl aes-256-cbc -K $encrypted_ff613480c5bd_key -iv $encrypted_ff613480c5bd_iv
   -in secring.gpg.enc -out secring.gpg -d
+after_success: mvn deploy -Dgpg.passphrase=$GPG_PASSPHRASE
+env:
+  global:
+    secure: ZeW0ELyKTtfbuqyIxu+2ZsitDZHYg9pgpSIUzmqtQmtDFTF3LPZT3N1Echs9OQ80DnHamXIXlZBWBxfki/XmJvwNVe94+w+PZZIoZ5S8qB233hIX47wz0kyn7qDd4552/xXqBATtk0EXKsWw8ovoWIhuGNKZ0RsT0FNBp2HoiPA=
