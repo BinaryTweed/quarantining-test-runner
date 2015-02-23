@@ -77,14 +77,14 @@
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
-						<phase>verify</phase>
+						<phase>deploy</phase>
 						<goals>
 							<goal>sign</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<secretKeyring>secring.gpg</secretKeyring>
+					<secretKeyring>${project.build.sourceDirectory}/secring.gpg</secretKeyring>
 				</configuration>
 			</plugin>
 		</plugins>
