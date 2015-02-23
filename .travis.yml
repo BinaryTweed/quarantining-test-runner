@@ -1,1 +1,4 @@
 language: java
+before_install:
+- openssl aes-256-cbc -K $encrypted_ff613480c5bd_key -iv $encrypted_ff613480c5bd_iv
+  -in secring.gpg.enc -out secring.gpg -d
