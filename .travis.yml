@@ -1,11 +1,15 @@
 language: java
 branches:
   except:
-    - travis
+  - travis
 before_install:
 - openssl aes-256-cbc -K $encrypted_ff613480c5bd_key -iv $encrypted_ff613480c5bd_iv
   -in secring.gpg.enc -out secring.gpg -d
-after_success: mvn deploy -Dgpg.passphrase=$GPG_PASSPHRASE
+after_success: 
+- "git clone -b travis `git config --get remote.origin.url` target/travis"
+- "mvn deploy -Dgpg.passphrase=$GPG_PASSPHRASE --settings target/travis/settings.xml"
 env:
   global:
-    secure: ZeW0ELyKTtfbuqyIxu+2ZsitDZHYg9pgpSIUzmqtQmtDFTF3LPZT3N1Echs9OQ80DnHamXIXlZBWBxfki/XmJvwNVe94+w+PZZIoZ5S8qB233hIX47wz0kyn7qDd4552/xXqBATtk0EXKsWw8ovoWIhuGNKZ0RsT0FNBp2HoiPA=
+  - secure: ZeW0ELyKTtfbuqyIxu+2ZsitDZHYg9pgpSIUzmqtQmtDFTF3LPZT3N1Echs9OQ80DnHamXIXlZBWBxfki/XmJvwNVe94+w+PZZIoZ5S8qB233hIX47wz0kyn7qDd4552/xXqBATtk0EXKsWw8ovoWIhuGNKZ0RsT0FNBp2HoiPA=
+  - secure: FFfI9uILcw+HeCNHH53jUzZl3tkKsqM8Te5FAJJpUA2xeLlfRMs7vNHr85cBNvu312gqXLBTllkRwVs1GPx09OEplHJWfRiUR/4abo3pW49GNUK8Z1Le3ugxPWac5Bw+M+Ey7vOYsUQfKQXpoGhCq+G3v3TDgfDJfgF2DM1yNTU=
+  - secure: QyGwgBLky2ziXsz5rXNbnC9Exv6/8VdCnWoOJOozY5ooFPQLa1BQHZaI4q0vASIcXqtFhy06Tpb19MDaUynd0gWCfDmXTgvxKb+DlDm4ICkrj9KMGiMAP8oBjNUvpjJ7/Xgm24KqitBpMDxvINOXFsNqkIgxtuJ89gXTaYPx6AU=
