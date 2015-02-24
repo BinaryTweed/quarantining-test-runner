@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.binarytweed</groupId>
 	<artifactId>quarantining-test-runner</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -52,7 +52,6 @@
 	<profiles>
 		<profile>
 			<id>release-profile</id>
-
 			<activation>
 				<property>
 					<name>gpg.passphrase</name>
