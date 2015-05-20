@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.junit.runner.Runner;
-import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.JUnit4;
 
 /**
  * Specifies the {@code Runner} that {@code QuarantiningRunner} delegates to. 
@@ -19,5 +19,5 @@ public @interface DelegateRunningTo
 	/**
 	 * @return the {@code Runner} that {@code QuarantiningRunner} delegates to.
 	 */
-	public Class<? extends Runner> value() default BlockJUnit4ClassRunner.class;
+	public Class<? extends Runner> value() default JUnit4.class;
 }
