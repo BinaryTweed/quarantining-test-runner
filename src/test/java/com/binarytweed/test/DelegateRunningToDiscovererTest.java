@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.JUnit4;
 
 @SuppressWarnings("rawtypes")
 public class DelegateRunningToDiscovererTest
@@ -40,7 +40,7 @@ public class DelegateRunningToDiscovererTest
 	{
 		DelegateRunningToDiscoverer discoverer = new DelegateRunningToDiscoverer();
 		Class discovered = discoverer.getDelegateRunningToOn(FixtureWithoutValue.class);
-		assertThat(discovered, equalTo((Class) BlockJUnit4ClassRunner.class));
+		assertThat(discovered, equalTo((Class) JUnit4.class));
 	}
 	
 	
@@ -49,6 +49,6 @@ public class DelegateRunningToDiscovererTest
 	{
 		DelegateRunningToDiscoverer discoverer = new DelegateRunningToDiscoverer();
 		Class discovered = discoverer.getDelegateRunningToOn(UnannotatedFixture.class);
-		assertThat(discovered, equalTo((Class) BlockJUnit4ClassRunner.class));
+		assertThat(discovered, equalTo((Class) JUnit4.class));
 	}
 }
