@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.binarytweed</groupId>
 	<artifactId>quarantining-test-runner</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
