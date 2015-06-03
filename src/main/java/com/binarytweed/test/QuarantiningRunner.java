@@ -1,7 +1,6 @@
 package com.binarytweed.test;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
@@ -40,12 +39,9 @@ public class QuarantiningRunner extends Runner
 		String testFileClassName = testFileClass.getName();
 		String delegateRunningToClassName = delegateRunningTo.getName();
 		
-		String[] quarantinedPatterns = quarantinedPatternDiscoverer.getQuarantinedPatternsOn(testFileClass);
-		String[] allPatterns = Arrays.copyOf(quarantinedPatterns, quarantinedPatterns.length + 2);
-		allPatterns[quarantinedPatterns.length] = testFileClassName;
-		allPatterns[quarantinedPatterns.length + 1] = delegateRunningToClassName;
+		String[] quarantinedPatterns = quarantinedPatternDiscoverer.getQuarantinedPatternsOn(testFileClass, delegateRunningTo);
 		
-		QuarantiningUrlClassLoader classLoader = new QuarantiningUrlClassLoader(allPatterns);
+		QuarantiningUrlClassLoader classLoader = new QuarantiningUrlClassLoader(quarantinedPatterns);
 
 		try
 		{

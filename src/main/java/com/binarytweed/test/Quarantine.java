@@ -21,4 +21,11 @@ public @interface Quarantine
 	 * @return prefix patterns which {@code QuarantiningUrlClassLoader} will load in a separate ClassLoader
 	 */
 	public String[] value() default {};
+	
+	
+	/**
+	 * 
+	 * @return whether the annotated test class and the runner used should also be quarantined.
+	 */
+	public boolean quarantineTestAndRunner() default true;
 }
