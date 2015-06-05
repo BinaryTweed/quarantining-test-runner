@@ -10,7 +10,7 @@ A JUnit test runner that loads the <strong>test class</strong> and optionally sp
 <dependency>
   <groupId>com.binarytweed</groupId>
   <artifactId>quarantining-test-runner</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 
@@ -33,3 +33,8 @@ public class MyIsolatedTest {
 1. Use `@Quarantine("com.example")` to specify patterns which separately-loaded class names should start with.
 1. Optionally specify `@DelegateRunningTo(SomeCustomRunner.class)` to have `QuarantiningRunner` use another `Runner` implementation. By default it uses [`org.junit.runners.JUnit4`](http://junit.sourceforge.net/javadoc/org/junit/runners/JUnit4.html) (which currently extends `BlockJUnit4ClassRunner`).
 
+## How it works
+
+The test class and runner class are loaded using `QuarantiningUrlClassLoader`. When either of these two classes reference a class that hasn't yet been loaded, `QuarantiningUrlClassLoader` will be used to load the requested class. 
+
+It will delegate loading classes that _do not match_ the patterns provided by `@Quarantined` to its parent `ClassLoader`; patterns that _do match_ are loaded by itself. Because each test run uses a a distinct instance of `QuarantiningUrlClassLoader`, any classes it loads are distinct from any previous runs.
